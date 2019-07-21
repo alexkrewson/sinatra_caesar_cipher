@@ -159,7 +159,7 @@ class Cipher
 
 
 cipher = Cipher.new
-hangman = Hangman.new
+# hangman = Hangman.new
 
 do_counter = 0
 
@@ -170,13 +170,13 @@ get '/' do
   
   encrypted_word = "nothing yet"
   if do_counter == 0
-    hangman_output = "guess a letter above"
-    hangman_output_message = "then hit 'submit'"
+    # hangman_output = "guess a letter above"
+    # hangman_output_message = "then hit 'submit'"
     encrypted_word = "enter a word to encrypt, above, then hit 'encrypt'"
   else
-    this_letter = params["hangman_letter"]
-    hangman_output = hangman.play(this_letter)
-    hangman_output_message = hangman.hangman_output_message
+    # this_letter = params["hangman_letter"]
+    # hangman_output = hangman.play(this_letter)
+    # hangman_output_message = hangman.hangman_output_message
     encrypted_word = cipher.caesar_cipher(params["word"],params["key"].to_i)
   end
   do_counter += 1
@@ -185,6 +185,6 @@ get '/' do
 
 
 
-  erb :index, :locals => {:encrypted_word => encrypted_word, :hangman_output => hangman_output, :hangman_output_message => hangman_output_message}
+  erb :index, :locals => {:encrypted_word => encrypted_word}
 
 end
